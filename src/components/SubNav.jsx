@@ -18,7 +18,7 @@ const SubNavLink = styled.a`
 
 function SubNav({ items }) {
   return (
-    <SubNavList className="subnav">
+    <SubNavList className="subnav"> 
       {items.map((item, index) => (
         <SubNavItem key={index}>
           <SubNavLink href={item.href}>{item.text}</SubNavLink>
