@@ -22,3 +22,16 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# System files.CFUserTextEncoding.cache/.cups/.gitconfig.lesshst.npm/.ssh/.viminfo.zprofile.zsh_history.zsh_sessions/
+Applications/
+BBDownloads/
+Desktop/
+Documents/
+Downloads/
+Library/
+Movies/
+Music/
+Pictures/
+Public/.localized
+Public/Drop Box/
