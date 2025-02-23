@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// Styled component for the subnav list
 const SubNavList = styled.ul`
+  /* No display property here—let the .subnav CSS rule control it */
   list-style: none;
   margin: 0;
   padding: 0;
@@ -19,6 +19,7 @@ const SubNavLink = styled.a`
   color: black;
   padding: 10px;
   display: block;
+
   &:hover {
     background-color: #ddd;
   }
@@ -26,7 +27,7 @@ const SubNavLink = styled.a`
 
 function SubNav({ items }) {
   return (
-    <SubNavList>
+    <SubNavList className="subnav">
       {items.map((item, index) => (
         <SubNavItem key={index}>
           <SubNavLink href={item.href}>{item.text}</SubNavLink>

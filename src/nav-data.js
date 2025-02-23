@@ -5,7 +5,6 @@ const navItems = [
     subnav: [
       { href: '/acoustic', text: 'Acoustic Guitars' },
       { href: '/electric', text: 'Electric Guitars' },
-
     ],
   },
   {
@@ -14,7 +13,6 @@ const navItems = [
     subnav: [
       { href: '/notable-owners', text: 'Notable Owners' },
       { href: '/notable-makers', text: 'Notable Makers' },
-
     ],
   },
   {
@@ -23,7 +21,6 @@ const navItems = [
     subnav: [
       { href: '/alpha', text: 'Alpha' },
       { href: '/bravo', text: 'Bravo' },
-
     ],
   },
   {
@@ -32,7 +29,6 @@ const navItems = [
     subnav: [
       { href: '/xray', text: 'Xray' },
       { href: '/yoyo', text: 'Yoyo' },
-
     ],
   },
   // ... more nav items

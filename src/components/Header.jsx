@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar';
-import { HeaderWrapper } from './Navbar.styled.jsx'; // Import the HeaderWrapper
+import { HeaderWrapper } from './Navbar.styled.jsx';
 
 function Header() {
   return (

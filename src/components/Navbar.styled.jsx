@@ -42,7 +42,7 @@ export const NavList = styled.ul`
 export const NavItem = styled.li`
   margin-right: 40px;
   position: relative;
-  height: 100%; 
+  height: 100%;
 
   &:hover a {
     color: #000;
@@ -56,10 +56,6 @@ export const NavLink = styled.a`
   font-size: 16px;
   font-family: 'Unica One', sans-serif;
   transition: color 0.3s ease;
-
-  ${props => props.$isHovered && `  
-    color: #ABB9BB;
-  `}
 `;
 
 export const Logo = styled.a`
