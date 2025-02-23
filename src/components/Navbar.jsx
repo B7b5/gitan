@@ -1,10 +1,20 @@
 import React, { useState } from 'react';
-import { MainNav, NavContent, NavList, NavItem, NavLink } from './Navbar.styled.jsx'; // Assuming your styled-components are defined
-import SubNav from './SubNav';  // Import the SubNav component
-import navItems from '../nav-data';  // Import the navItems data
+import { MainNav, NavContent, NavList, NavItem, NavLink } from './Navbar.styled.jsx';
+import SubNav from './SubNav';
+import navItems from '../nav-data';
 
 function Navbar() {
-  const [hoveredNavItem, setHoveredNavItem] = useState(null);  // Track which nav item is hovered
+  const [hoveredNavItem, setHoveredNavItem] = useState(null);
+
+  const handleMouseEnter = (itemText) => {
+    console.log('Hovered on:', itemText); // Log when an item is hovered
+    setHoveredNavItem(itemText);
+  };
+
+  const handleMouseLeave = () => {
+    console.log('Left hover');
+    setHoveredNavItem(null);
+  };
 
   return (
     <MainNav>
@@ -13,8 +23,8 @@ function Navbar() {
           {navItems.map((item) => (
             <NavItem
               key={item.text}
-              onMouseEnter={() => setHoveredNavItem(item.text)} // Set the hovered item
-              onMouseLeave={() => setHoveredNavItem(null)}    // Reset when mouse leaves
+              onMouseEnter={() => handleMouseEnter(item.text)} // Updated to log
+              onMouseLeave={handleMouseLeave}
             >
               <NavLink href={item.href}>
                 {item.text}
