@@ -41,7 +41,7 @@ export const NavList = styled.ul`
 
 export const NavItem = styled.li`
   margin-right: 40px;
-  position: relative; // Add this line
+  position: relative;
   height: 100%; 
 
   &:hover a {

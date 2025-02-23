@@ -17,6 +17,8 @@ const SubNavLink = styled.a`
 `;
 
 function SubNav({ items }) {
+  console.log('SubNav component rendered with items:', items);
+
   return (
     <SubNavList className="subnav"> 
       {items.map((item, index) => (
@@ -29,3 +31,4 @@ function SubNav({ items }) {
 }
 
 export default SubNav;
+// In the SubNav component, we import styled-components and create styled components for the sub-navigation list, sub-navigation item, and sub-navigation link. We then define the SubNav component that takes in an items prop. This prop is an array of objects, where each object represents a sub-navigation item with text and href properties. We map over the items array and render a list of sub-navigation items with links.
