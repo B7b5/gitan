@@ -23,18 +23,18 @@ function Navbar() {
           {navItems.map((item) => (
             <NavItem
               key={item.text}
-              onMouseEnter={() => handleMouseEnter(item.text)}  // Ensure this is firing
-              onMouseLeave={handleMouseLeave}  // Ensure this is firing
+              onMouseEnter={() => handleMouseEnter(item.text)}  // Ensure hover event is applied here
+              onMouseLeave={handleMouseLeave}  // Ensure hover event is applied here
             >
               <NavLink href={item.href}>
                 {item.text}
               </NavLink>
-
-              {/* Conditional rendering of SubNav */}
+            
+              {/* Conditionally render SubNav when hovered */}
               {item.subnav && hoveredNavItem === item.text && (
                 <SubNav items={item.subnav} />
               )}
-            </NavItem>
+          </NavItem>
           ))}
         </NavList>
       </NavContent>
