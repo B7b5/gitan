@@ -11,25 +11,24 @@ function Navbar() {
       <NavContent>
         {/* Render navigation items */}
         <NavList>
-          {navItems.map((item) => {
-            console.log('Navbar item with subnav:', item.subnav); // Ensure subnav data is printed
-            return (
-              <NavItem
-                key={item.text}
-                onMouseEnter={() => setHoveredNavItem(item.text)}
-                onMouseLeave={() => setHoveredNavItem(null)}
-              >
-                <NavLink href={item.href} $isHovered={hoveredNavItem && hoveredNavItem !== item.text}>
-                  {item.text}
-                </NavLink>
-                
-                {/* Conditionally render SubNav only if subnav exists */}
-                {item.subnav && (
-                  <SubNav items={item.subnav} />
-                )}
-              </NavItem>
-            );
-          })}
+        {navItems.map((item) => {
+          console.log('Navbar item with subnav:', item.subnav); // Ensure subnav is logged
+          return (
+            <NavItem
+              key={item.text}
+              onMouseEnter={() => setHoveredNavItem(item.text)}  // Handle hover enter
+              onMouseLeave={() => setHoveredNavItem(null)}       // Handle hover leave
+            >
+              <NavLink href={item.href}>
+                {item.text}
+              </NavLink>
+              {item.subnav && hoveredNavItem === item.text && (
+                <SubNav items={item.subnav} />
+              )}
+            </NavItem>
+          );
+        })}
+
         </NavList>
       </NavContent>
     </MainNav>
