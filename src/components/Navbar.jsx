@@ -7,12 +7,12 @@ function Navbar() {
   const [hoveredNavItem, setHoveredNavItem] = useState(null);
 
   const handleMouseEnter = (itemText) => {
-    console.log('Hovered on:', itemText); // Log when an item is hovered
+    console.log('Hovered on:', itemText); // Check if hover event is firing
     setHoveredNavItem(itemText);
   };
 
   const handleMouseLeave = () => {
-    console.log('Left hover');
+    console.log('Left hover'); // Check when the hover leaves
     setHoveredNavItem(null);
   };
 
@@ -23,14 +23,14 @@ function Navbar() {
           {navItems.map((item) => (
             <NavItem
               key={item.text}
-              onMouseEnter={() => handleMouseEnter(item.text)} // Updated to log
-              onMouseLeave={handleMouseLeave}
+              onMouseEnter={() => handleMouseEnter(item.text)}  // Ensure this is firing
+              onMouseLeave={handleMouseLeave}  // Ensure this is firing
             >
               <NavLink href={item.href}>
                 {item.text}
               </NavLink>
 
-              {/* Conditionally render SubNav when hovered */}
+              {/* Conditional rendering of SubNav */}
               {item.subnav && hoveredNavItem === item.text && (
                 <SubNav items={item.subnav} />
               )}
