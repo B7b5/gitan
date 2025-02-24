@@ -61,7 +61,7 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* Navigation */
+/* Nav container */
 nav {
   position: fixed;
   top: 0;
@@ -73,22 +73,22 @@ nav {
   padding-top: 60px;
 }
 
-/* Ensure each nav item can position the subnav absolutely */
+/* The parent <li> for each nav item */
 .nav-item {
   position: relative;
 }
 
-/* By default, subnav is hidden */
+/* Subnav is hidden by default */
 .subnav {
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
   background-color: #f9f9f9;
-  z-index: 101;
+  z-index: 101; /* Or higher if needed */
 }
 
-/* Reveal subnav on hover */
+/* Reveal subnav on nav-item hover */
 .nav-item:hover .subnav {
   display: block;
 }

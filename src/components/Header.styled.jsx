@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-/* Unused in the current code, but you can keep it if you plan to expand. */
 export const HeaderContainer = styled.header`
   position: relative;
   width: 100%;
@@ -9,6 +8,7 @@ export const HeaderContainer = styled.header`
   z-index: 100;
 `;
 
+/* In your new code, you mainly use this: */
 export const HeaderWrapper = styled.header`
   position: sticky;
   top: 0;

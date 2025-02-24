@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const SubNavList = styled.ul`
-  /* No display property here—let the .subnav CSS rule control it */
+  /* Let .subnav in index.css control the display property */
   list-style: none;
   margin: 0;
   padding: 0;

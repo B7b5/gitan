@@ -31,7 +31,7 @@ const navItems = [
       { href: '/yoyo', text: 'Yoyo' },
     ],
   },
-  // ... more nav items
+  // ...more nav items
 ];
 
 export default navItems;
