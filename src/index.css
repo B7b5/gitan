@@ -116,5 +116,5 @@ nav {
 /* Force override the overflow that is clipping your subnav */
 div.sc-dVBluf.eQTQQZ {
   overflow-x: visible !important;
-  overflow-y: visible !important; /* if needed */
+  overflow-y: visible !important;
 }
