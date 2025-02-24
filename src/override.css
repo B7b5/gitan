@@ -90,7 +90,7 @@ nav {
   top: 100%;
   left: 0;
   background-color: #f9f9f9;
-  z-index: 111; /* ensure subnav stays on top of everything */
+  z-index: 101; /* ensure subnav stays on top of everything */
   background-color: pink;     /* <— test color so you can see it */
   border: 2px solid red;      /* <— outline it */
   padding: 20px;             /* <— give it some size */
