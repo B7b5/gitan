@@ -118,3 +118,8 @@ div.sc-dVBluf.eQTQQZ {
   overflow-x: visible !important;
   overflow-y: visible !important;
 }
+
+/* DEBUG: override.css should appear in the final bundle! */
+body {
+  border: 5px solid magenta; /* just for testing */
+}
