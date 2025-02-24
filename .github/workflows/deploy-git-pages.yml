@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # or your primary branch name
+      - main  # Change if your default branch has a different name
 
 jobs:
   deploy:
@@ -15,21 +15,21 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # Change if needed
+          node-version: '18'  # Or whatever Node version you need
 
       - name: Install dependencies
-        run: npm install
+        run: npm install  # Or yarn install
 
       - name: Build React app
-        run: npm run build
+        run: npm run build  # Or yarn build
 
       - name: Update index.html with new file names
         run: |
-          # Grab the hashed JS and CSS filenames
+          # Capture the hashed JS and CSS filenames from dist/assets/
           JS_FILE=$(ls dist/assets/index-*.js)
           CSS_FILE=$(ls dist/assets/index-*.css)
 
-          # Use '|' as the sed delimiter to avoid issues with '-' or '/' in filenames
+          # Use '|' as the sed delimiter to avoid conflicts with dashes/slashes
           sed -i "s|src=\".*index-.*\\.js\"|src=\"$JS_FILE\"|" dist/index.html
           sed -i "s|href=\".*index-.*\\.css\"|href=\"$CSS_FILE\"|" dist/index.html
 
