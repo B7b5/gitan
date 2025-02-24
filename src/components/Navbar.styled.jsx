@@ -1,18 +1,23 @@
 import styled from 'styled-components';
 
 export const HeaderWrapper = styled.header`
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  /* position: sticky; */
+  /* top: 0; */
   width: 100%;
+  z-index: 100;
 `;
 
+/* Your main nav styling */
 export const MainNav = styled.nav`
   background-color: #fff;
   color: #333;
   padding: 20px;
   border-bottom: 1px solid #eee;
   width: 100%;
+
+  /* Removed sticky/fixed from here
+     (because we have nav { position: fixed } in index.css)
+  */
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -26,8 +31,12 @@ export const NavContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  /* Remove overflow-x: hidden if not strictly needed,
+     it can clip the subnav if it extends horizontally */
+  /* overflow-x: hidden; */
+
   min-width: 800px;
-  overflow-x: hidden;
 `;
 
 export const NavList = styled.ul`

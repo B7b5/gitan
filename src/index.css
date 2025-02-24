@@ -11,9 +11,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Let the page be as tall as it needs instead of forcing 100vh */
 #root {
   display: block;
-  height: 100vh;
+  /* height: 100vh;  <-- Remove so subnav can extend below if needed */
   width: 100%;
 }
 
@@ -27,14 +28,18 @@ a:hover {
   color: #535bf2;
 }
 
+/* Let body scroll freely, remove "display: flex; place-items: center" 
+   so your subnav can appear below the nav if it’s tall. */
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  /* remove display:flex & place-items:center if not strictly needed */
+  /* display: flex;       
+  place-items: center; */
+  background-color: #242424; /* keep your BG color if you want */
 }
 
+/* Standard headings */
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -61,39 +66,39 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* Nav container */
+/* Keep the nav fixed at top. This is your main "sticky" behavior. */
 nav {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 999; /* just a bit higher than default elements */
 }
 
 .header-content {
   padding-top: 60px;
 }
 
-/* The parent <li> for each nav item */
+/* Parent <li> for each nav item, position relative so subnav can absolutely position. */
 .nav-item {
   position: relative;
 }
 
-/* Subnav is hidden by default */
+/* Subnav defaults hidden, absolutely positioned below parent. */
 .subnav {
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
   background-color: #f9f9f9;
-  z-index: 101; /* Or higher if needed */
+  z-index: 9999; /* ensure subnav stays on top of everything */
 }
 
-/* Reveal subnav on nav-item hover */
+/* Hover to show subnav. */
 .nav-item:hover .subnav {
   display: block;
 }
 
-/* Subnav links */
+/* Subnav link styles */
 .subnav a {
   color: black;
   padding: 15px 20px; /* Larger padding for easier clicking */
