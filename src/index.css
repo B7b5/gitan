@@ -71,7 +71,7 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 999; /* just a bit higher than default elements */
+  z-index: 999;
 }
 
 .header-content {
@@ -91,6 +91,9 @@ nav {
   left: 0;
   background-color: #f9f9f9;
   z-index: 9999; /* ensure subnav stays on top of everything */
+  background-color: pink;     /* <— test color so you can see it */
+  border: 2px solid red;      /* <— outline it */
+  padding: 20px;             /* <— give it some size */
 }
 
 /* Hover to show subnav. */
