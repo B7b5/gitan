@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Change if your default branch has a different name
+      - main  # or your default branch
 
 jobs:
   deploy:
@@ -15,21 +15,21 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # Or whatever Node version you need
+          node-version: '18'
 
       - name: Install dependencies
-        run: npm install  # Or yarn install
+        run: npm install
 
       - name: Build React app
-        run: npm run build  # Or yarn build
+        run: npm run build  # or yarn build if you use Yarn
 
       - name: Update index.html with new file names
         run: |
-          # Capture the hashed JS and CSS filenames from dist/assets/
+          # Capture your hashed JS/CSS filenames from dist/assets/
           JS_FILE=$(ls dist/assets/index-*.js)
           CSS_FILE=$(ls dist/assets/index-*.css)
 
-          # Use '|' as the sed delimiter to avoid conflicts with dashes/slashes
+          # Use '|' as the sed delimiter to avoid errors with '-' or '/' in filenames
           sed -i "s|src=\".*index-.*\\.js\"|src=\"$JS_FILE\"|" dist/index.html
           sed -i "s|href=\".*index-.*\\.css\"|href=\"$CSS_FILE\"|" dist/index.html
 
@@ -43,4 +43,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_branch: gh-pages  # <--- pushes to gh-pages
+          publish_dir: ./dist       # <--- what folder to publish
