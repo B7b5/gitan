@@ -32,10 +32,6 @@ export const NavContent = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  /* Remove overflow-x: hidden if not strictly needed,
-     it can clip the subnav if it extends horizontally */
-  /* overflow-x: hidden; */
-
   min-width: 800px;
 `;
 
