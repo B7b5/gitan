@@ -118,3 +118,7 @@ div.sc-dVBluf.eQTQQZ {
   overflow-x: visible !important;
   overflow-y: visible !important;
 }
+
+.test-debug {
+  background-color: yellow;
+}
