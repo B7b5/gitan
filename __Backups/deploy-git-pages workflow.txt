@@ -45,3 +45,61 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages  # <--- pushes to gh-pages
           publish_dir: ./dist       # <--- what folder to publish
+
+
+-------------
+
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # or your default branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build React app
+        run: npm run build  # or yarn build if you use Yarn
+
+      - name: Update index.html with new file names
+        run: |
+          # Capture your hashed JS/CSS filenames from dist/assets/
+          JS_FILE=$(ls dist/assets/*.js | head -n 1)
+          CSS_FILE=$(ls dist/assets/*.css | head -n 1)
+
+          # Check if files were found
+          if [[ -z "$JS_FILE" || -z "$CSS_FILE" ]]; then
+            echo "Error: JS or CSS file not found in dist/assets/"
+            exit 1
+          fi
+
+          # Use '|' as the sed delimiter to avoid errors with '-' or '/' in filenames
+          sed -i "s|src=\".*\\.js\"|src=\"$JS_FILE\"|" dist/index.html
+          sed -i "s|href=\".*\\.css\"|href=\"$CSS_FILE\"|" dist/index.html
+
+      - name: Setup SSH deploy key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages  # <--- pushes to gh-pages
+          publish_dir: ./dist       # <--- what folder to publish
