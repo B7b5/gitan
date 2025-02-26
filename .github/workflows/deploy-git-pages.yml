@@ -26,12 +26,18 @@ jobs:
       - name: Update index.html with new file names
         run: |
           # Capture your hashed JS/CSS filenames from dist/assets/
-          JS_FILE=$(ls dist/assets/index-*.js)
-          CSS_FILE=$(ls dist/assets/index-*.css)
+          JS_FILE=$(ls dist/assets/*.js | head -n 1)
+          CSS_FILE=$(ls dist/assets/*.css | head -n 1)
+
+          # Check if files were found
+          if [[ -z "$JS_FILE" || -z "$CSS_FILE" ]]; then
+            echo "Error: JS or CSS file not found in dist/assets/"
+            exit 1
+          fi
 
           # Use '|' as the sed delimiter to avoid errors with '-' or '/' in filenames
-          sed -i "s|src=\".*index-.*\\.js\"|src=\"$JS_FILE\"|" dist/index.html
-          sed -i "s|href=\".*index-.*\\.css\"|href=\"$CSS_FILE\"|" dist/index.html
+          sed -i "s|src=\".*\\.js\"|src=\"$JS_FILE\"|" dist/index.html
+          sed -i "s|href=\".*\\.css\"|href=\"$CSS_FILE\"|" dist/index.html
 
       - name: Setup SSH deploy key
         uses: shimataro/ssh-key-action@v2
