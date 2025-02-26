@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "postinstall": "cp src/index.css assets/index-DXk09CdQ.css",
+    "watch:css": "chokidar 'src/index.css' -c 'cp src/index.css assets/index-DXk09CdQ.css'",
+    "dev": "npm run watch:css & vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -24,6 +26,7 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.18",
     "globals": "^15.14.0",
-    "vite": "^6.1.0"
+    "vite": "^6.1.0",
+    "chokidar-cli": "^3.0.0"
   }
 }

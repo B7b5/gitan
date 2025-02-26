@@ -8,7 +8,7 @@ function App() {
       <h1>Gitan</h1>
       <p>Legacy Instruments</p>
     </div>
-  );
+  ); 
 }
 
 export default App;
