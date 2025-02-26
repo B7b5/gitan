@@ -5,8 +5,8 @@ function App() {
   return (
     <div>
       <Header />
-      <h1>Gitan</h1>
-      <p>Legacy Instruments</p>
+      <h2>Gitan</h2>
+      <p>Legacy</p>
     </div>
   ); 
 }
