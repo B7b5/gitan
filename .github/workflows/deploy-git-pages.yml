@@ -23,12 +23,11 @@ jobs:
       - name: Build React app
         run: npm run build  # or yarn build if you use Yarn
 
-      - name: Copy CSS File to Dist
+      - name: Copy CSS File to Correct Location
         run: |
           if [[ -f "src/index.css" ]]; then
-            mkdir -p dist/assets
-            cp src/index.css dist/assets/index.css
-            echo "CSS file copied successfully."
+            cp src/index.css dist/index.css  # Copy to dist/ instead of dist/assets/
+            echo "CSS file copied successfully to dist/"
           else
             echo "Error: src/index.css not found!"
             exit 1
@@ -38,17 +37,21 @@ jobs:
         run: |
           # Capture your hashed JS/CSS filenames from dist/assets/
           JS_FILE=$(ls dist/assets/*.js | head -n 1)
-          CSS_FILE=$(ls dist/assets/*.css | head -n 1)
+          CSS_FILE="index.css"  # CSS is now in dist/, so no need to look in dist/assets/
 
           # Check if files were found
-          if [[ -z "$JS_FILE" || -z "$CSS_FILE" ]]; then
-            echo "Error: JS or CSS file not found in dist/assets/"
+          if [[ -z "$JS_FILE" ]]; then
+            echo "Error: JS file not found in dist/assets/"
+            exit 1
+          fi
+          if [[ ! -f "dist/index.css" ]]; then
+            echo "Error: CSS file not found in dist/"
             exit 1
           fi
 
           # Use '|' as the sed delimiter to avoid errors with '-' or '/' in filenames
           sed -i "s|src=\".*\\.js\"|src=\"$JS_FILE\"|" dist/index.html
-          sed -i "s|href=\".*\\.css\"|href=\"$CSS_FILE\"|" dist/index.html
+          sed -i "s|href=\".*\\.css\"|href=\"./index.css\"|" dist/index.html
 
       - name: Setup SSH deploy key
         uses: shimataro/ssh-key-action@v2
