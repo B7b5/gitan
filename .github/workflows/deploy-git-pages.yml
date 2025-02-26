@@ -23,6 +23,17 @@ jobs:
       - name: Build React app
         run: npm run build  # or yarn build if you use Yarn
 
+      - name: Copy CSS File to Dist
+        run: |
+          if [[ -f "src/index.css" ]]; then
+            mkdir -p dist/assets
+            cp src/index.css dist/assets/index.css
+            echo "CSS file copied successfully."
+          else
+            echo "Error: src/index.css not found!"
+            exit 1
+          fi
+
       - name: Update index.html with new file names
         run: |
           # Capture your hashed JS/CSS filenames from dist/assets/
