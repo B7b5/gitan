@@ -23,7 +23,18 @@ dist-ssr
 *.sln
 *.sw?
 
-# System files.CFUserTextEncoding.cache/.cups/.gitconfig.lesshst.npm/.ssh/.viminfo.zprofile.zsh_history.zsh_sessions/
+# System files
+.CFUserTextEncoding
+.cache/
+.cups/
+.gitconfig
+.lesshst
+.npm/
+.ssh/
+.viminfo
+.zprofile
+.zsh_history
+.zsh_sessions/
 Applications/
 BBDownloads/
 Desktop/
@@ -34,4 +45,4 @@ Movies/
 Music/
 Pictures/
 Public/.localized
-Public/Drop Box/
+Public/Drop\ Box/

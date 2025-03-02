@@ -1,13 +1,19 @@
+// src/components/Navbar/SubNav.jsx
+
 import React from 'react';
 import styled from 'styled-components';
 
 const SubNavList = styled.ul`
-  /* Let .subnav in index.css control the display property */
   list-style: none;
   margin: 0;
   padding: 0;
   background-color: #f9f9f9;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none; /* hidden until NavItem hover */
 `;
 
 const SubNavItem = styled.li`

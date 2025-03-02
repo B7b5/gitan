@@ -1,50 +1,64 @@
+/* index.css (updated) */
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #d8d8d8;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Let the page be as tall as it needs instead of forcing 100vh */
+/* #root no longer has max-width, margin, or padding */
+
 #root {
-  display: block;
-  /* height: 100vh;  <-- Remove so subnav can extend below if needed */
+  /* Instead, let's make it fill the screen width: */
   width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left; /* or center if you wish; your call */
 }
 
+/* Standard link styling */
 a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
+  transition: color 0.3s ease;
 }
-
 a:hover {
   color: #535bf2;
 }
 
-/* Let body scroll freely, remove "display: flex; place-items: center" 
-   so your subnav can appear below the nav if it’s tall. */
+/* Fade effect for link/button hover */
+a,
+button {
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Ensure body can scroll properly */
 body {
   margin: 0;
   min-width: 320px;
-  /* remove display:flex & place-items:center if not strictly needed */
-  /* display: flex;       
-  place-items: center; */
-  background-color: #242424; /* keep your BG color if you want */
+  background-color: #ffffff;
+  overflow-x: hidden;
 }
 
-/* Standard headings */
+/* Global heading color */
+h1, h2, h3, h4, h5, h6 {
+  color: #002b31;
+}
+
+/* Headings */
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
 
+/* Buttons */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -56,17 +70,15 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-
 button:hover {
   border-color: #646cff;
 }
-
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* Keep the nav fixed at top. This is your main "sticky" behavior. */
+/* The nav bar is fixed at the top */
 nav {
   position: fixed;
   top: 0;
@@ -74,51 +86,71 @@ nav {
   z-index: 100;
 }
 
+/* If your header has some content inside (like .header-content), 
+   you can keep or remove this as needed */
 .header-content {
-  padding-top: 60px;
+  padding-top: 100px;
 }
 
-/* Parent <li> for each nav item, position relative so subnav can absolutely position. */
+/* Subnav / dropdown style */
 .nav-item {
   position: relative;
 }
-
-/* Subnav defaults hidden, absolutely positioned below parent. */
 .subnav {
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
   background-color: #f9f9f9;
-  z-index: 101; /* ensure subnav stays on top of everything */
-  background-color: pink;     /* <— test color so you can see it */
-  border: 2px solid red;      /* <— outline it */
-  padding: 20px;             /* <— give it some size */
+  z-index: 101;
+  border: none;
+  padding: 20px;
 }
 
-/* Hover to show subnav. */
-.nav-item:hover .subnav {
-  display: block;
-}
-
-/* Subnav link styles */
 .subnav a {
   color: black;
-  padding: 15px 20px; /* Larger padding for easier clicking */
+  padding: 15px 20px;
   text-decoration: none;
   display: block;
 }
-
 .subnav a:hover {
   background-color: #f1f1f1;
 }
 
-/* Force override the overflow that is clipping your subnav */
+/* Ensure dropdown is visible in styled-components layout */
 div.sc-dVBluf.eQTQQZ {
-  overflow-x: visible !important;
-  overflow-y: visible !important;
+  overflow: visible !important;
 }
 
-.test-debug {
-  background-color: yellow;
+/* Additional (logos, animations, etc.) */
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+.card {
+  padding: 2em;
+}
+.read-the-docs {
+  color: #888;
 }

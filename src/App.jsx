@@ -1,14 +1,19 @@
+// src/App.jsx
+
 import React from 'react';
-import Header from './components/Header';
+import Header from './components/Header/Header';
+import Banner from './components/Banner/Banner';
+// Import the Carousel
+import Carousel from './components/Carousel/Carousel';
 
 function App() {
   return (
-    <div>
+    <>
       <Header />
-      <h2>Gitan</h2>
-      <p>Legacy</p>
-    </div>
-  ); 
+      <Banner />
+      <Carousel />
+    </>
+  );
 }
 
 export default App;
